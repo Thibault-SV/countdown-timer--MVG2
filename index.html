@@ -5,47 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
     <style>
+        /* Style global pour que tout soit centré */
         body {
             font-family: 'Roboto', sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
-        }
-        #countdown {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 900;
-            color: #C44C51;
-            font-size: 48px;
+            height: 100vh; /* Prend toute la hauteur de la fenêtre */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            margin-top: 20px;
+        }
+
+        /* Le texte au-dessus du compte à rebours */
+        .header-text {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        /* Conteneur du compte à rebours */
+        #countdown {
             display: flex;
             justify-content: center;
         }
+
+        /* Style pour chaque section (heures, minutes, secondes) */
         .countdown-section {
             margin: 0 20px;
         }
+
+        /* Style des chiffres */
+        .countdown-time {
+            font-size: 48px;
+            font-weight: 900;
+            color: #C44C51;
+        }
+
+        /* Style des labels sous les chiffres */
         .countdown-label {
-            font-weight: 900; /* Roboto Bold */
+            font-weight: 900;
             color: black;
             font-size: 20px;
             margin-top: 5px;
         }
-        .countdown-time {
-            font-size: 48px;
-            font-weight: 900;
-        }
-        .header-text {
-            font-size: 24px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            color: black;
-        }
     </style>
 </head>
 <body>
+
     <!-- Texte au-dessus du décompte -->
     <div class="header-text">Rendez-vous pris, on se voit dans :</div>
 
+    <!-- Compte à rebours -->
     <div id="countdown">
         <div class="countdown-section">
             <div id="hours" class="countdown-time">00</div>
