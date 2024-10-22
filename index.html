@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer with Auto-Redirect</title>
+    <title>Countdown Timer with Button to Webinar</title>
     <style>
         /* Style global pour que tout soit centré */
         body {
@@ -27,13 +27,15 @@
 
         #countdown {
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* Espacement égal entre les sections */
             align-items: center;
             flex-wrap: nowrap; /* Empêche le retour à la ligne */
+            max-width: 400px; /* Définit une largeur maximale pour le compte à rebours */
+            width: 100%;
         }
 
         .countdown-section {
-            margin: 0 10px; /* Même espace entre les sections */
+            flex: 1; /* Donne à chaque section la même largeur */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -52,6 +54,20 @@
             margin-top: 5px;
         }
 
+        /* Style pour le bouton d'accès au webinaire */
+        #webinar-button {
+            display: none; /* Masqué au début */
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 900; /* Roboto Black */
+            background-color: #C44C51;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px; /* Bords légèrement arrondis */
+            margin-top: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
         /* Ajustement pour les petits écrans */
         @media (max-width: 600px) {
             .countdown-time {
@@ -59,9 +75,6 @@
             }
             .countdown-label {
                 font-size: 14px; /* Réduire la taille des labels sur petits écrans */
-            }
-            .countdown-section {
-                margin: 0 5px; /* Réduire l'espace entre les sections sur petits écrans */
             }
         }
     </style>
@@ -85,32 +98,39 @@
         </div>
     </div>
 
+    <!-- Bouton d'accès au webinaire -->
+    <a id="webinar-button" href="https://event.webinarjam.com/go/live/68/zyq3yi76f7s1sv" target="_blank">Accéder au Webinaire</a>
+
     <script>
         function startCountdown() {
-            var now = new Date();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var countdownMinutes = 14 - (minutes % 15);
-            var countdownSeconds = 59 - seconds;
+            // Définir une durée de 15 minutes
+            var countdownDuration = 15 * 60 * 1000; // 15 minutes en millisecondes
+            var targetTime = new Date().getTime() + countdownDuration;
 
-            if (countdownMinutes < 0) countdownMinutes = 0;
-            if (countdownSeconds < 0) countdownSeconds = 0;
+            function updateCountdown() {
+                var now = new Date().getTime();
+                var distance = targetTime - now;
 
-            var formattedMinutes = countdownMinutes < 10 ? "0" + countdownMinutes : countdownMinutes;
-            var formattedSeconds = countdownSeconds < 10 ? "0" + countdownSeconds : countdownSeconds;
+                if (distance < 0) {
+                    // Remplacer le compte à rebours par le bouton
+                    document.getElementById("countdown").style.display = "none"; // Masquer le compte à rebours
+                    document.getElementById("webinar-button").style.display = "inline-block"; // Afficher le bouton
+                    return;
+                }
 
-            // Mettre à jour les éléments HTML
-            document.getElementById("hours").innerHTML = "00"; // Pas de calcul d'heures ici
-            document.getElementById("minutes").innerHTML = formattedMinutes;
-            document.getElementById("seconds").innerHTML = formattedSeconds;
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Vérifier si le compte à rebours est terminé
-            if (countdownMinutes === 0 && countdownSeconds === 0) {
-                // Rediriger automatiquement vers le webinaire
-                window.location.href = 'https://event.webinarjam.com/go/live/68/zyq3yi76f7s1sv';
-            } else {
-                setTimeout(startCountdown, 1000);
+                // Mettre à jour les éléments HTML
+                document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+                setTimeout(updateCountdown, 1000); // Mettre à jour chaque seconde
             }
+
+            updateCountdown(); // Démarrer le compte à rebours
         }
 
         window.onload = function() {
