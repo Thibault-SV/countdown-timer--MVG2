@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
     <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
         #countdown {
             font-family: 'Roboto', sans-serif;
             font-weight: 900;
@@ -28,9 +34,18 @@
             font-size: 48px;
             font-weight: 900;
         }
+        .header-text {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: black;
+        }
     </style>
 </head>
 <body>
+    <!-- Texte au-dessus du décompte -->
+    <div class="header-text">Rendez-vous pris, on se voit dans :</div>
+
     <div id="countdown">
         <div class="countdown-section">
             <div id="hours" class="countdown-time">00</div>
