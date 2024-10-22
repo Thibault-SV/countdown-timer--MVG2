@@ -52,23 +52,10 @@
             margin-top: 5px;
         }
 
-        /* Style pour les deux points */
-        .separator {
-            font-size: 48px;
-            font-weight: 900;
-            color: #C44C51;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 48px;
-            padding-bottom: 10px; /* Ajuste l'alignement des deux points */
-        }
-
         /* Ajustement pour les petits écrans */
         @media (max-width: 600px) {
-            .countdown-time, .separator {
-                font-size: 36px; /* Réduire la taille des chiffres et des séparateurs sur petits écrans */
-                line-height: 36px; /* Ajuster l'alignement pour les petits écrans */
+            .countdown-time {
+                font-size: 36px; /* Réduire la taille des chiffres sur petits écrans */
             }
             .countdown-label {
                 font-size: 14px; /* Réduire la taille des labels sur petits écrans */
@@ -88,12 +75,10 @@
             <div id="hours" class="countdown-time">00</div>
             <div class="countdown-label">HEURES</div>
         </div>
-        <div class="separator">:</div> <!-- Ajouter les deux points ici -->
         <div class="countdown-section">
             <div id="minutes" class="countdown-time">00</div>
             <div class="countdown-label">MINUTES</div>
         </div>
-        <div class="separator">:</div> <!-- Ajouter les deux points ici -->
         <div class="countdown-section">
             <div id="seconds" class="countdown-time">00</div>
             <div class="countdown-label">SECONDES</div>
