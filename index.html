@@ -30,6 +30,7 @@
         #countdown {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap; /* Pour permettre aux sections de se réorganiser si l'espace devient trop petit */
         }
 
         /* Style pour chaque section (heures, minutes, secondes) */
@@ -50,6 +51,19 @@
             color: black;
             font-size: 20px;
             margin-top: 5px;
+        }
+
+        /* Ajustement pour les petits écrans */
+        @media (max-width: 600px) {
+            .countdown-time {
+                font-size: 36px; /* Réduire la taille des chiffres sur petits écrans */
+            }
+            .countdown-label {
+                font-size: 16px; /* Réduire la taille des labels sur petits écrans */
+            }
+            .countdown-section {
+                margin: 0 10px; /* Réduire l'espace entre les sections */
+            }
         }
     </style>
 </head>
