@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        #countdown {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            color: #C44C51;
+            font-size: 48px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .countdown-section {
+            margin: 0 20px;
+        }
+        .countdown-label {
+            font-weight: 900; /* Roboto Bold */
+            color: black;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+        .countdown-time {
+            font-size: 48px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">
+        <div class="countdown-section">
+            <div id="hours" class="countdown-time">00</div>
+            <div class="countdown-label">HEURES</div>
+        </div>
+        <div class="countdown-section">
+            <div id="minutes" class="countdown-time">00</div>
+            <div class="countdown-label">MINUTES</div>
+        </div>
+        <div class="countdown-section">
+            <div id="seconds" class="countdown-time">00</div>
+            <div class="countdown-label">SECONDES</div>
+        </div>
+    </div>
+
+    <script>
+        function startCountdown() {
+            var now = new Date();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var countdownMinutes = 14 - (minutes % 15);
+            var countdownSeconds = 59 - seconds;
+
+            if (countdownMinutes < 0) countdownMinutes = 0;
+            if (countdownSeconds < 0) countdownSeconds = 0;
+
+            var formattedMinutes = countdownMinutes < 10 ? "0" + countdownMinutes : countdownMinutes;
+            var formattedSeconds = countdownSeconds < 10 ? "0" + countdownSeconds : countdownSeconds;
+
+            // Mettre à jour les éléments HTML
+            document.getElementById("hours").innerHTML = "00"; // Pas de calcul d'heures ici, donc toujours "00"
+            document.getElementById("minutes").innerHTML = formattedMinutes;
+            document.getElementById("seconds").innerHTML = formattedSeconds;
+
+            setTimeout(startCountdown, 1000);
+        }
+
+        window.onload = function() {
+            startCountdown();
+        };
+    </script>
+
+    <!-- Charger la police Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+</body>
+</html>
