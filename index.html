@@ -21,6 +21,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             width: 100%;
         }
 
@@ -28,7 +29,7 @@
             font-size: 24px;
             font-weight: 900;
             color: black;
-            margin-bottom: 10px;
+            margin-bottom: 5px; /* Réduit l'espace en dessous du texte d'entête */
         }
 
         #countdown {
@@ -38,6 +39,7 @@
             flex-wrap: nowrap; /* Empêche le retour à la ligne */
             max-width: 400px; /* Définit une largeur maximale pour le compte à rebours */
             width: 100%;
+            margin-bottom: 5px; /* Réduit l'espace en dessous du compte à rebours */
         }
 
         .countdown-section {
@@ -45,32 +47,33 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 0; /* Réduit les marges à 0 */
         }
 
         .countdown-time {
             font-size: 48px;
             font-weight: 900;
             color: #C44C51;
+            margin: 0; /* Enlève les marges */
         }
 
         .countdown-label {
             font-weight: 900;
             color: black;
             font-size: 16px;
-            margin-top: 5px;
+            margin: 0; /* Réduit l'espace sous les labels */
         }
 
         /* Style pour le bouton d'accès au webinaire */
         #webinar-button {
             display: none; /* Masqué au début */
-            padding: 15px 30px;
+            padding: 10px 20px; /* Réduit le padding du bouton */
             font-size: 18px;
             font-weight: 900; /* Roboto Black */
             background-color: #C44C51;
             color: white;
             text-decoration: none;
             border-radius: 8px; /* Bords légèrement arrondis */
-            margin-top: 20px;
             font-family: 'Roboto', sans-serif;
         }
 
