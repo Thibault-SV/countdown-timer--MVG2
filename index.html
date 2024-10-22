@@ -57,14 +57,15 @@
             font-size: 48px;
             font-weight: 900;
             color: #C44C51;
-            line-height: 48px; /* Alignement vertical des deux points avec les chiffres */
+            display: flex;
+            align-items: center; /* Assure que les deux points soient centrés verticalement */
+            justify-content: center;
         }
 
         /* Ajustement pour les petits écrans */
         @media (max-width: 600px) {
             .countdown-time, .separator {
                 font-size: 36px; /* Réduire la taille des chiffres et des séparateurs sur petits écrans */
-                line-height: 36px; /* Ajuster l'alignement pour les petits écrans */
             }
             .countdown-label {
                 font-size: 14px; /* Réduire la taille des labels sur petits écrans */
