@@ -58,14 +58,17 @@
             font-weight: 900;
             color: #C44C51;
             display: flex;
-            align-items: center; /* Assure que les deux points soient centrés verticalement */
+            align-items: center;
             justify-content: center;
+            line-height: 48px;
+            padding-bottom: 10px; /* Ajuste l'alignement des deux points */
         }
 
         /* Ajustement pour les petits écrans */
         @media (max-width: 600px) {
             .countdown-time, .separator {
                 font-size: 36px; /* Réduire la taille des chiffres et des séparateurs sur petits écrans */
+                line-height: 36px; /* Ajuster l'alignement pour les petits écrans */
             }
             .countdown-label {
                 font-size: 14px; /* Réduire la taille des labels sur petits écrans */
