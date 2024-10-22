@@ -118,17 +118,17 @@
             var hours = now.getHours();
             var minutes = now.getMinutes();
 
+            var targetTime;
+
             // Cas où on est entre 23h00 et 7h00
             if (hours >= 23 || hours < 7) {
-                // Calculer le temps restant jusqu'à 7h00
-                var targetTime = new Date();
+                // Calculer le temps restant jusqu'à 7h00 du matin le lendemain
+                targetTime = new Date();
+                targetTime.setHours(7); 
+                targetTime.setMinutes(0);
+                targetTime.setSeconds(0);
                 if (hours >= 23) {
-                    targetTime.setHours(7); // Passer au jour suivant, 7h du matin
-                    targetTime.setMinutes(0);
-                    targetTime.setSeconds(0);
-                    targetTime.setMilliseconds(0);
-                } else {
-                    targetTime.setHours(7, 0, 0, 0); // Réglé à 7h00 du même jour
+                    targetTime.setDate(targetTime.getDate() + 1); // Passer au jour suivant
                 }
             } else {
                 // Calculer le prochain quart d'heure (00, 15, 30, 45)
@@ -137,7 +137,7 @@
                     hours += 1;
                     nextQuarter = 0;
                 }
-                var targetTime = new Date();
+                targetTime = new Date();
                 targetTime.setHours(hours, nextQuarter, 0, 0); // Réglé au prochain quart d'heure
             }
 
